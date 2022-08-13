@@ -1,0 +1,17 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "My fifth or so discord bot because I wanted to listen to music in Arthur's Kingdom",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "MllereA",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^1.0.1",
+    "discord-api-types": "^0.36.1",
+    "discord.js": "^14.2.0",
+    "dotenv": "^16.0.1"
+  }
+}
