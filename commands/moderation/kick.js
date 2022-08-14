@@ -4,8 +4,8 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('kick')
         .setDescription('Kicks a member')
-        .addUserOption(opt => opt.setName("member").setDescription("Member to ban").setRequired(true))
-        .addStringOption(opt => opt.setName("reason").setDescription("Reason to ban member"))
+        .addUserOption(opt => opt.setName("member").setDescription("Member to kick").setRequired(true))
+        .addStringOption(opt => opt.setName("reason").setDescription("Reason to kick member"))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
     category: "moderation",
     async execute(client, interaction, args) {
