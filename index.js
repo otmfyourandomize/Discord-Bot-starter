@@ -8,13 +8,16 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildPresences
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
     ]
 });
 
 
 client.commands = new Collection();
 client.aliases = new Collection();
+client.snipes = new Collection();
 
 //command handler
 const COMMANDS_PATH = path.join(__dirname, "commands");
