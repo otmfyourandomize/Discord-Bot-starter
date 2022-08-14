@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("help")
@@ -30,19 +30,15 @@ module.exports = {
                             value: '`' + (cmd.usage || `/${cmd.data.name}`) + '`',
                             inline: true
                         },
-                        (cmd.aliases?.length ? {
+                        (cmd.aliases?.length && {
                             name: "Aliases",
                             value: '`' + cmd.aliases.join('` `') + '`',
                             inline: true
-                        } : null),
-                        (cmd.authorPermissions?.length ? {
-                            name: "Required Author Permissions",
-                            value: '`' + cmd.authorPermissions.join('` `') + '`'
-                        } : null),
-                        (cmd.botPermissions?.length ? {
-                            name: "Required Bot Permissions",
-                            value: '`' + cmd.botPermissions.join('` `') + '`'
-                        } : null)
+                        }),
+                        (cmd.data.default_member_permissions && {
+                            name: "Required Permissions",
+                            value: '`' + new PermissionsBitField(cmd.data.default_member_permissions).toArray().join('` `') + '`'
+                        })
                     ].filter(Boolean),
                     footer: { text: `Syntax: <> = required, [] = optional, || = or` },
                     color: 0x2F3136
