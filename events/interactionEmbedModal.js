@@ -3,7 +3,6 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
     name: 'interactionCreate',
     async execute(client, interaction) {
-        console.log(interaction, interaction.isModalSubmit())
         if (!interaction.isModalSubmit() || interaction.customId !== "create_embed") return;
         const { title, description, color } = Object.fromEntries([...interaction.fields.fields]);
         const embed = new EmbedBuilder()
