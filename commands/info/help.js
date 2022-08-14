@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("help")
@@ -20,10 +21,10 @@ module.exports = {
             embeds: commandExists ? ([
                 {
                     author: {
-                        name: `${command.charAt(0).toUpperCase() + command.slice(1)} command`,
+                        name: `${capitalize(command)} command`,
                         icon_url: interaction.member.avatarURL() || interaction.member.user.avatarURL()
                     },
-                    description: `**${cmd.category}** : ` + cmd.data.description,
+                    description: `**${capitalize(cmd.category)}** : ` + cmd.data.description,
                     fields: [
                         {
                             name: "Usage",
@@ -49,7 +50,7 @@ module.exports = {
                         name: "Commands",
                         icon_url: interaction.member.avatarURL() || interaction.member.user.avatarURL()
                     },
-                    fields: Object.entries(commands).map(([category, cmd]) => ([category === "undefined" ? "Unknown" : category, cmd])).map(([category, commands]) => ({ name: category.charAt(0).toUpperCase() + category.slice(1), value: "`" + commands.join('` `') + "`", inline: true })),
+                    fields: Object.entries(commands).map(([category, cmd]) => ([category === "undefined" ? "Unknown" : category, cmd])).map(([category, commands]) => ({ name: capitalize(category), value: "`" + commands.join('` `') + "`", inline: true })),
                     color: 0x2F3136
                 }
             ]), ephemeral: true

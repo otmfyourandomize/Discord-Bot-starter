@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, AttachmentBuilder, Attachment } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,10 +8,13 @@ module.exports = {
     category: "moderation",
     async execute(client, interaction, args) {
         const msg = client.snipes.get(interaction.channelId);
-        if (msg == null) return interaction.reply({ content: "Couldn't find any deleted messages in this channel!", ephemeral: true })
-        const embed = new EmbedBuilder()
-            .setTitle(`Sniped ${msg.author.tag}`)
-            .setDescription(msg.content);
-        await interaction.reply({ embeds: [embed], ephemeral: true });
+        if (msg == null) return interaction.reply({ content: "Couldn't find any deleted messages in this channel!", ephemeral: true });
+        console.log(msg);
+        await interaction.reply({
+            content: `**Sniped from ${msg.author.tag}**\n${msg.content}`,
+            embeds: msg.embeds,
+            files: [...msg.attachments].map(([key, { proxyURL, url, name, description }]) => new AttachmentBuilder(proxyURL || url, { name, description })),
+            ephemeral: true
+        })
     },
 };
