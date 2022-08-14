@@ -9,7 +9,6 @@ module.exports = {
     async execute(client, interaction, args) {
         const msg = client.snipes.get(interaction.channelId);
         if (msg == null) return interaction.reply({ content: "Couldn't find any deleted messages in this channel!", ephemeral: true });
-        console.log(msg);
         await interaction.reply({
             content: `**Sniped from ${msg.author.tag}**\n${msg.content}`,
             embeds: msg.embeds,
