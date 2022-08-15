@@ -20,7 +20,6 @@ module.exports = {
         }
         if (!member.moderatable) return interaction.reply({ content: `I cannot timeout this member`, ephemeral: true });
         const time = args.minutes * 60000;
-        console.log(args)
         const timedout = await member.timeout(time == 0 ? null : time, args.reason);
         const days = Math.floor(time / 86400000);
         const hours = Math.floor(time / 3600000) % 24;
