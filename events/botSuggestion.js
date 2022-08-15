@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
     name: 'interactionCreate',
     async execute(client, interaction) {
-        if (!interaction.isModalSubmit() || interaction.customId !== "bot_suggestion") return;
+        if (!interaction.isModalSubmit() || interaction.customId !== "bot_suggestion" || require("../blacklisted.js")(interaction)) return;
         const { title, description } = Object.fromEntries([...interaction.fields.fields].map(x => [x[0], x[1].value]));
         const embed = new EmbedBuilder()
             .setAuthor({ name: `Submitted by ${interaction.user.tag} (${interaction.user.id})`, iconURL: interaction.user.displayAvatarURL() })

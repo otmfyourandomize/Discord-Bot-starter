@@ -1,7 +1,7 @@
 module.exports = {
     name: 'interactionCreate',
     async execute(client, interaction) {
-        if (!interaction.isCommand()) return;
+        if (!interaction.isCommand() || require("../blacklisted.js")(interaction)) return;
         const command = client.commands.get(interaction.commandName);
         if (!command) return;
         try {
