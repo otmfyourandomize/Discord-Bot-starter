@@ -15,6 +15,7 @@ module.exports = {
         } catch (e) {
             return interaction.reply({ content: `I couldn't find this member`, ephemeral: true });
         }
+        if (opponent.user.bot) return interaction.reply({ content: `You can't play against a bot`, ephemeral: true });
         const game = new TicTacToe();
         const players = {
             X: opponent,
