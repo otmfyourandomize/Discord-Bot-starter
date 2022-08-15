@@ -5,6 +5,7 @@ module.exports = {
         .setName('snipe')
         .setDescription('Shows the last deleted message in the channel')
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
+    usage: "/snipe",
     category: "moderation",
     async execute(client, interaction, args) {
         const msg = client.snipes.get(interaction.channelId);

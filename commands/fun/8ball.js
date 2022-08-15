@@ -26,6 +26,7 @@ module.exports = {
         .setName('8ball')
         .setDescription('Ask the 8ball a question')
         .addStringOption(opt => opt.setName('question').setDescription("Question to ask the 8ball").setRequired(true)),
+    usage: "/8ball <question>",
     category: "fun",
     async execute(client, interaction, args) {
         await interaction.reply({

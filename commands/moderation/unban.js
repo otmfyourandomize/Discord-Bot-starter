@@ -7,6 +7,7 @@ module.exports = {
         .addUserOption(opt => opt.setName("member").setDescription("Member to ban").setRequired(true))
         .addStringOption(opt => opt.setName("reason").setDescription("Reason to unban member"))
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
+    usage: "/unban <memberId> [reason]",
     category: "moderation",
     async execute(client, interaction, args) {
         if (!interaction.inGuild()) return interaction.reply({ content: `This command can only be used in a guild.` });

@@ -8,6 +8,7 @@ module.exports = {
         .addStringOption(opt => opt.setName("reason").setDescription("Reason to ban member"))
         .addIntegerOption(opt => opt.setName("purge").setDescription("Number of days of messages to delete"))
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
+    usage: "/ban <member> [reason] [purge]",
     category: "moderation",
     async execute(client, interaction, args) {
         if (!interaction.inGuild()) return interaction.reply({ content: `This command can only be used in a guild.` });

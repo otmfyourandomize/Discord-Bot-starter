@@ -7,6 +7,7 @@ module.exports = {
         .addUserOption(opt => opt.setName("member").setDescription("Member to kick").setRequired(true))
         .addStringOption(opt => opt.setName("reason").setDescription("Reason to kick member"))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
+    usage: "/kick <member> [reason]",
     category: "moderation",
     async execute(client, interaction, args) {
         if (!interaction.inGuild()) return interaction.reply({ content: `This command can only be used in a guild.` });

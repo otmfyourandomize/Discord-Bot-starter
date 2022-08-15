@@ -6,6 +6,7 @@ module.exports = {
         .setName('embed')
         .setDescription('Creates an embed')
         .setDefaultMemberPermissions(PermissionFlagsBits.EmbedLinks),
+    usage: "/embed",
     category: "moderation",
     async execute(client, interaction, args) {
         const modal = new ModalBuilder()

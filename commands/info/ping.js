@@ -4,6 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
         .setDescription('Gets bot ping'),
+    usage: "/ping",
     category: "info",
     async execute(client, interaction, args) {
         let before = Date.now();
@@ -22,7 +23,7 @@ module.exports = {
                         name: "API Latency",
                         value: "`" + Math.round(client.ws.ping) + "`",
                         inline: true
-                    },{
+                    }, {
                         name: "Message Latency",
                         value: "`" + (Date.now() - before) + "`",
                         inline: true

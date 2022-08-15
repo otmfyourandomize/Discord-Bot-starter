@@ -8,6 +8,7 @@ module.exports = {
         .addNumberOption(opt => opt.setName("minutes").setDescription("Timeout in minutes").setMaxValue(40319).setRequired(true))
         .addStringOption(opt => opt.setName("reason").setDescription("Reason to timeout member"))
         .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers),
+    usage: "/timeout <member> <minutes> [reason]",
     category: "moderation",
     async execute(client, interaction, args) {
         if (!interaction.inGuild()) return interaction.reply({ content: `This command can only be used in a guild.` });
