@@ -50,7 +50,7 @@ module.exports = {
                         name: "Commands",
                         icon_url: interaction.member.avatarURL() || interaction.member.user.avatarURL()
                     },
-                    fields: Object.entries(commands).map(([category, cmd]) => ([category === "undefined" ? "Unknown" : category, cmd])).map(([category, commands]) => ({ name: capitalize(category), value: "`" + commands.join('` `') + "`", inline: true })),
+                    fields: Object.entries(commands).map(([category, cmd]) => ([category === "undefined" ? "Unknown" : category, cmd])).map(([category, commands]) => ({ name: `${capitalize(category)} (${commands.length})`, value: "`" + commands.join('` `') + "`" })),
                     color: 0x2F3136
                 }
             ]), ephemeral: true

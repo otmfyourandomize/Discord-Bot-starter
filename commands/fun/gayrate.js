@@ -11,7 +11,7 @@ module.exports = {
             embeds: [
                 new EmbedBuilder()
                     .setTitle("Gay Rate")
-                    .setDescription(`${(args.target ? interaction.guild.members.fetch(args.target) : interaction.member).toString()} is ${args.target == "600356507829141544" ? 0 : Math.floor(Math.random()*100)}% gay`)
+                    .setDescription(`${(args.target ? await interaction.guild.members.fetch(args.target) : interaction.member).toString()} is ${args.target == "600356507829141544" ? 0 : Math.floor(Math.random()*100)}% gay`)
                     .setColor("2F3136")
             ]
         });
