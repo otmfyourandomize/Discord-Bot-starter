@@ -15,7 +15,7 @@ module.exports = {
             embeds: [
                 new EmbedBuilder()
                     .setTitle("Uptime")
-                    .setDescription(`${days ? `${days} day${day == 1 ? '' : 's'} ` : ''}${hours ? `${hours} hour${hours == 1 ? '' : 's'} ` : ''}${minutes ? `${minutes} minute${minutes == 1 ? '' : 's'} ` : ''}${seconds ? `${seconds} second${seconds == 1 ? '' : 's'}` : ''}`)
+                    .setDescription(`${days ? `${days} day${days == 1 ? '' : 's'} ` : ''}${hours ? `${hours} hour${hours == 1 ? '' : 's'} ` : ''}${minutes ? `${minutes} minute${minutes == 1 ? '' : 's'} ` : ''}${seconds ? `${seconds} second${seconds == 1 ? '' : 's'}` : ''}`)
                     .setColor("2F3136")
             ]
         });
