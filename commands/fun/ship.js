@@ -22,6 +22,7 @@ module.exports = {
     usage: "/ship [first] [second]",
     category: "fun",
     async execute(client, interaction, args) {
+        await interaction.deferReply();
         let first, second;
         try {
             first = args.first ? await interaction.guild.members.fetch(args.first) : (await interaction.guild.members.fetch({ cache: false })).random();
@@ -43,7 +44,7 @@ module.exports = {
         const attachment = new AttachmentBuilder()
             .setFile(canvas.toBuffer())
             .setName("ship.png");
-        await interaction.reply({
+        await interaction.followUp({
             embeds: [
                 new EmbedBuilder()
                     .setTitle(`${first.displayName.slice(0, Math.floor(first.displayName.length / 2))}${second.displayName.slice(Math.floor(second.displayName.length / 2))}`)
