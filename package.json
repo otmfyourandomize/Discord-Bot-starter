@@ -4,7 +4,8 @@
   "description": "My fifth or so discord bot because I wanted to listen to music in Arthur's Kingdom",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "start": "node index.js"
   },
   "author": "MllereA",
   "license": "MIT",
