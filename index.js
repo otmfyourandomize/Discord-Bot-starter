@@ -36,3 +36,5 @@ for (const file of fs.readdirSync(EVENTS_PATH).filter(file => file.endsWith(".js
 }
 client.on('error', console.warn);
 client.login(TOKEN);
+
+require('./server.js')(process.env.PORT || 3000);
