@@ -17,6 +17,13 @@ module.exports = {
         }
         if (opponent.user.bot) return interaction.reply({ content: `You can't play against a bot`, ephemeral: true });
         const game = new TicTacToe();
+        game.get = function (x, y) {
+            const board = game.ascii().split("-----------").map(x => x.split('|').map(e => e.replace(/[^OX]/g, '')));
+            x--;
+            y = Math.abs(y - size);
+
+            return !board[y][x] ? null : board[y][x];
+        }
         const players = {
             X: opponent,
             O: interaction.member
