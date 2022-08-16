@@ -20,7 +20,7 @@ module.exports = {
         game.get = function (x, y) {
             const board = game.ascii().split("-----------").map(x => x.split('|').map(e => e.replace(/[^OX]/g, '')));
             x--;
-            y = Math.abs(y - size);
+            y = Math.abs(y - 3);
 
             return !board[y][x] ? null : board[y][x];
         }
