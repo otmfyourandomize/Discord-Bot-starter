@@ -11,12 +11,13 @@ module.exports = {
             .setDescription(description)
             .setColor("#2F3136")
             .setTimestamp(new Date(Date.now()));
+        const { GUILD_ID, SUGGEST_CHANNEL } = process.env;
         try {
-            const guild = await client.guilds.fetch("770424929627144242");
-            const channel = await guild.channels.fetch("1008873275616669778");
+            const guild = await client.guilds.fetch(GUILD_ID);
+            const channel = await guild.channels.fetch(SUGGEST_CHANNEL);
             await channel.send({ embeds: [embed] });
             return interaction.reply({ content: "Your suggestion has been submitted.", ephemeral: true });
-        } catch(e) {
+        } catch (e) {
             console.log(e)
             return interaction.reply({ content: "There was an error sending your suggestion", ephemeral: true });
         }

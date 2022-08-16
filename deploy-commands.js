@@ -1,8 +1,7 @@
 require('dotenv').config();
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientId } = require('./config.json');
-const { TOKEN } = process.env;
+const { TOKEN, CLIENT_ID } = process.env;
 const path = require('path');
 const fs = require('fs');
 const COMMANDS_PATH = path.join(__dirname, 'commands');
@@ -13,6 +12,6 @@ for (const category of fs.readdirSync(COMMANDS_PATH).filter(folder => fs.lstatSy
 console.log(commands)
 const rest = new REST({ version: '9' }).setToken(TOKEN);
 
-rest.put(Routes.applicationCommands(clientId), { body: commands })
+rest.put(Routes.applicationCommands(CLIENT_ID), { body: commands })
     .then(() => console.log('Successfully registered application commands.'))
     .catch(console.error);

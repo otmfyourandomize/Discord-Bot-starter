@@ -39,7 +39,7 @@ module.exports = {
         ctx.drawImage(await loadImage(BACKGROUND), 0, 0, canvas.width, canvas.height);
         ctx.drawImage(await loadImage(first.displayAvatarURL({ extension: "png", dynamic: true, size: 128 })), 0, 0, 128, 128);
         ctx.drawImage(await loadImage(second.displayAvatarURL({ extension: "png", dynamic: true, size: 128 })), 164, 0, 128, 128);
-        const percent = [first, second].some(x => x.id == "600356507829141544") && ![first, second].every(x => x.id == "600356507829141544") ? 0 : Math.floor(Math.random() * 100);
+        const percent = [first, second].some(x => x.id == process.env.OWNER_ID) && ![first, second].every(x => x.id == process.env.OWNER_ID) ? 0 : Math.floor(Math.random() * 100);
         ctx.drawImage(await loadImage(percent < 50 ? BROKEN_HEART : HEART), 0, 0, canvas.width, canvas.height);
         const attachment = new AttachmentBuilder()
             .setFile(canvas.toBuffer())
