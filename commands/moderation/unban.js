@@ -16,7 +16,8 @@ module.exports = {
         try {
             member = await bans.fetch(args.member);
         } catch (e) {
-            return interaction.reply({ content: `There was an error fetching member`, ephemeral: true })
+            console.log(e.message)
+            if (e.message !== "Unknown Ban") return interaction.reply({ content: `There was an error fetching member`, ephemeral: true })
         }
         if (!member) return interaction.reply({ content: `I couldn't find this member in the server bans`, ephemeral: true });
         const unbanned = await bans.remove(member.user, args.reason);
