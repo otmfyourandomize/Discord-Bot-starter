@@ -14,14 +14,11 @@ const typeKey = {
 module.exports = {
     name: 'interactionCreate',
     async execute(client, interaction) {
-        console.log(interaction.options, interaction.options._hoistedOptions.map(option => {
-            return [option.name, interaction.options[`get${typeKey[option.type]}`]?.(option.name) || option.value]
-        }).reduce((a, b) => (a[b[0]] = b[1], a), {}))
         if (!interaction.isCommand() || require("../blacklisted.js")(interaction)) return;
         const command = client.commands.get(interaction.commandName);
         if (!command) return;
         try {
-            await command.execute(client, interaction, Object.fromEntries(interaction.options._hoistedOptions.map(({ name, value }) => [name, value])));
+            await command.execute(client, interaction, interaction.options._hoistedOptions.map(option => [option.name, interaction.options[`get${typeKey[option.type]}`]?.(option.name) || option.value]).reduce((a, b) => (a[b[0]] = b[1], a), {}));
         } catch (error) {
             console.error(error);
             await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });

@@ -10,7 +10,7 @@ module.exports = {
     async execute(client, interaction, args) {
         let target;
         try {
-            target = args.member ? await interaction.guild.members.fetch(args.member) : interaction.member;
+            target = await interaction.guild.members.fetch(args.member || interaction.user);
         } catch {
             target = interaction.member;
         }

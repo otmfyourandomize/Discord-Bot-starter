@@ -8,11 +8,12 @@ module.exports = {
     usage: "/gayrate [member]",
     category: "fun",
     async execute(client, interaction, args) {
+        const target = args.target || interaction.user;
         await interaction.reply({
             embeds: [
                 new EmbedBuilder()
                     .setTitle("Gay Rate")
-                    .setDescription(`${(args.target ? await interaction.guild.members.fetch(args.target) : interaction.member).toString()} is ${args.target == process.env.OWNER_ID || interaction.member.id == process.env.OWNER_ID ? 0 : Math.floor(Math.random() * 100)}% gay`)
+                    .setDescription(`${target.toString()} is ${target.id == process.env.OWNER_ID ? 0 : Math.floor(Math.random() * 100)}% gay`)
                     .setColor("2F3136")
             ]
         });
