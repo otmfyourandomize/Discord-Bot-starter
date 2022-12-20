@@ -33,9 +33,7 @@ module.exports = {
         ctx.drawImage(await loadImage(second.displayAvatarURL({ extension: "png", dynamic: true, size: 128 })), 164, 0, 128, 128);
         const percent = [first, second].some(x => x.id == process.env.OWNER_ID) && ![first, second].every(x => x.id == process.env.OWNER_ID) ? 0 : Math.round(Math.random() * 100);
         ctx.drawImage(await loadImage(percent < 50 ? BROKEN_HEART : HEART), 0, 0, canvas.width, canvas.height);
-        const attachment = new AttachmentBuilder()
-            .setFile(canvas.toBuffer())
-            .setName("ship.png");
+        const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: "ship.png" });
         let key = ({
             a: "<:bar_begin_full:1054129337772818463>",
             b: "<:bar_begin_half:1054129392042905670>",

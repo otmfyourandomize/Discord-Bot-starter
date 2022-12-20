@@ -9,7 +9,7 @@ const typeKey = {
     "3": "String",
     "1": "Subcommand",
     "2": "SubcommandGroup",
-    "6": "User",
+    "6": "Member",
 }
 module.exports = {
     name: 'interactionCreate',
