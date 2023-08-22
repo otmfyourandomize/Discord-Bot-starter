@@ -1,13 +1,13 @@
 {
-  "name": "discord-bot",
+  "name": "updater-main",
   "version": "1.0.0",
-  "description": "My fifth or so discord bot because I wanted to listen to music in Arthur's Kingdom",
+  "description": "A member of the server updater!",
   "main": "index.js",
   "scripts": {
     "test": "node index.js",
     "start": "node index.js"
   },
-  "author": "MllereA",
+  "author": "good4you.lilman",
   "license": "MIT",
   "dependencies": {
     "@discordjs/rest": "^1.0.1",
